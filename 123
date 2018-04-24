@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+public class GetChild :Editor {
+    [MenuItem("ZED/c")]
+    public static void C() {
+        GameObject g = Selection.activeGameObject;
+        Transform[] ts = g.transform.GetComponentsInChildren<Transform>();
+        List<Transform> lts = new List<Transform>();
+        foreach (var t in ts) {
+            if (t.transform.parent == g.transform) {
+                lts.Add(t);
+            }
+        }
+        Debug.Log(lts.Count);
+    }
+
+}
